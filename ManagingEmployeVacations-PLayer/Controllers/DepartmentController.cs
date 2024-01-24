@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManagingEmployeVacations_PLayer.Controllers
 {
-    public class DepartmetnController : Controller
+    public class DepartmentController : Controller
     {
         private readonly IRepository<Department> RepoDepartment;
         private readonly IMapper Map;
 
-        public DepartmetnController(IRepository<Department> repoDepartment,IMapper map)
+        public DepartmentController(IRepository<Department> repoDepartment,IMapper map)
         {
             RepoDepartment = repoDepartment;
             Map = map;
