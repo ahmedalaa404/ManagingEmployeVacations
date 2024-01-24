@@ -10,7 +10,7 @@ namespace ManagingEmployeVacations_Dal.InterFaces
     public interface IGetAll<T> where T : BaseEntity
     {
 
-        public IQueryable<T> GetAll();
+        public IEnumerable<T?> GetAll();
 
     }
 }

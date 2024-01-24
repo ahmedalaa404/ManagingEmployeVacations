@@ -1,4 +1,7 @@
+using ManagingEmployeVacations_Bl.Repositorey;
 using ManagingEmployeVacations_Dal.Context;
+using ManagingEmployeVacations_Dal.InterFaces;
+using ManagingEmployeVacations_PLayer.Profiles;
 using Microsoft.EntityFrameworkCore;
 
 namespace ManagingEmployeVacations_PLayer
@@ -17,7 +20,8 @@ namespace ManagingEmployeVacations_PLayer
             {
                 Options.UseSqlServer(builder.Configuration.GetConnectionString("VacationDbContext"));
             });
-
+            builder.Services.AddAutoMapper(typeof(MapperProfile));
+            builder.Services.AddScoped(typeof(IRepository<>),typeof(Repositorey<>));
 
 
             #endregion

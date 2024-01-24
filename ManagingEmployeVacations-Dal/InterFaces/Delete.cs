@@ -9,10 +9,7 @@ namespace ManagingEmployeVacations_Dal.InterFaces
 {
     public interface Delete <t> where t:BaseEntity
     {
-        public interface Delete<t> where t : BaseEntity
-        {
-            public void Delete(t Tentity);
+        public void DeleteEntity(t entity);
 
-        }
     }
 }

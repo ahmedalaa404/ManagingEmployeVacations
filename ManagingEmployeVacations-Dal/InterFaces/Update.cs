@@ -9,6 +9,7 @@ namespace ManagingEmployeVacations_Dal.InterFaces
 {
     public interface Update<t> where t : BaseEntity
     {
+        void UpdateEntity(t entity);
 
     }
 }

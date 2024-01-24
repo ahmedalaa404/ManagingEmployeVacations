@@ -10,6 +10,6 @@ namespace ManagingEmployeVacations_Dal.InterFaces
     public interface IGetById<T> where T : BaseEntity
     {
 
-        public T GetById(int id);
+        public T? GetById(int id);
     }
 }

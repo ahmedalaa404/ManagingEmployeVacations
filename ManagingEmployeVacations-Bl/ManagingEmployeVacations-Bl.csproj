@@ -11,8 +11,4 @@
     <ProjectReference Include="..\ManagingEmployeVacations-Dal\ManagingEmployeVacations-Dal.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositorey\" />
-  </ItemGroup>
-
 </Project>
