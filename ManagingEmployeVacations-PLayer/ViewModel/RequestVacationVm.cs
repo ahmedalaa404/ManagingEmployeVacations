@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using ManagingEmployeVacations_Dal.Entites;
 
-namespace ManagingEmployeVacations_Dal.Entites
+namespace ManagingEmployeVacations_PLayer.ViewModel
 {
-    public class RequestVacation:BaseEntity
+    public class RequestVacationVm
     {
+
         public int EmpoyeeId { get; set; }
         public Employee Empoyee { get; set; }
 
@@ -15,7 +16,7 @@ namespace ManagingEmployeVacations_Dal.Entites
 
 
         public VacationType VacationType { get; set; }
-        public int  VacationTypeId { get; set; }
+        public int VacationTypeId { get; set; }
 
 
         public bool Approved { get; set; }
@@ -25,10 +26,6 @@ namespace ManagingEmployeVacations_Dal.Entites
 
 
         public string Comment { get; set; }
-        public List<VacationDatePlan> VacationDatePlan { get; set; } = new List<VacationDatePlan>();
-
-
-
 
     }
 }

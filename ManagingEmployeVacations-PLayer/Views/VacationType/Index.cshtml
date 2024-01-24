@@ -17,6 +17,9 @@
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
                         <th>
+                            @Html.DisplayNameFor(model => model.Background_Color)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.NumberDays)
                         </th>
 
@@ -29,6 +32,10 @@
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+
+                            <td style="background-color:@item.Background_Color;">
+                                @Html.DisplayFor(modelItem => item.Background_Color)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.NumberDays)
