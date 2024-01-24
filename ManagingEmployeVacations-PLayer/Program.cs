@@ -1,3 +1,6 @@
+using ManagingEmployeVacations_Dal.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace ManagingEmployeVacations_PLayer
 {
     public class Program
@@ -5,6 +8,20 @@ namespace ManagingEmployeVacations_PLayer
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+
+
+
+            #region Start Of Dependency Injections
+            builder.Services.AddDbContext<VacationContext>(Options =>
+            {
+                Options.UseSqlServer(builder.Configuration.GetConnectionString("VacationDbContext"));
+            });
+
+
+
+            #endregion
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

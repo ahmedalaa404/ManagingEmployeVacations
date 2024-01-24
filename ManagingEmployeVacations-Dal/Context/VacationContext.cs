@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ManagingEmployeVacations_Dal.Entites;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,11 @@ namespace ManagingEmployeVacations_Dal.Context
             
         }
 
-
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<VacationType> VacationsType { get; set; }
+        public DbSet<RequestVacation> RequestsVacation { get; set; }
+        public DbSet<VacationDatePlan> VacationsDatePlan { get; set; }
 
 
 

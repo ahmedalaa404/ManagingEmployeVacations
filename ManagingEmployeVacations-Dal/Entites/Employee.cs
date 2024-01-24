@@ -12,6 +12,10 @@ namespace ManagingEmployeVacations_Dal.Entites
 
         public int VacationBalance { get; set; }
 
+        public int DepartmentId { get; set; }
+
+        
+        public Department Department { get; set; }
         public List<RequestVacation> RequestVacations { get; set; }
 
 
