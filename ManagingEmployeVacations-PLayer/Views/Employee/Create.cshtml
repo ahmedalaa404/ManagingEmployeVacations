@@ -1,0 +1,42 @@
+﻿@model EmployeeVm
+
+
+<div class="container p-4">
+
+
+    <div asp-validation-summary="All" class="alert"></div>
+
+    <form asp-action="Create" method="post" asp-controller="Employee">
+
+
+
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input class="form-control" asp-for="Name">
+            <span asp-validation-for="Name"></span>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="vacationBalance">vacationBalance</label>
+            <input class="form-control" asp-for="VacationBalance">
+            <span asp-validation-for="VacationBalance"></span>
+        </div>
+
+
+        <div class="form-group">
+            <select asp-items="@(new SelectList(ViewBag.Department,"Id","Name"))" asp-for="DepartmentId" class="form-control">
+                <option value="">----Choose Department</option>
+            </select>
+           
+        
+        </div>
+
+
+
+        <button class="btn btn-success" type="submit">Create</button>
+        <a class ="btn btn-danger" asp-action="Index">Back </a>
+    </form>
+
+</div>

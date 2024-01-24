@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ManagingEmployeVacations_Dal.InterFaces
 {
-    public interface IRepository<t> : IGetAll<t>,IGetById<t>, Delete<t>,Update<t> ,ICreate<t> where t : BaseEntity
+    public interface ICreate<t> where t : BaseEntity
     {
 
-
+        public int Create(t entity);
 
     }
 }

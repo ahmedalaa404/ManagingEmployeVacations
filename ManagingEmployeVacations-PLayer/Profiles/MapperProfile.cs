@@ -9,6 +9,8 @@ namespace ManagingEmployeVacations_PLayer.Profiles
         public MapperProfile()
         {
             CreateMap<Department, DepartmentVm>().ReverseMap();
+            CreateMap<Employee, EmployeeVm>().ReverseMap(); 
+            CreateMap<VacationType, VacationTypeVm>().ReverseMap();
         }
 
     }

@@ -18,6 +18,12 @@ namespace ManagingEmployeVacations_Bl.Repositorey
             _Context = context;
         }
 
+        public int Create(t entity)
+        {
+            _Context.Set<t>().Add(entity);
+           return _Context.SaveChanges();
+        }
+
         public void DeleteEntity(t entity)
         {
             _Context.Set<t>().Remove(entity);

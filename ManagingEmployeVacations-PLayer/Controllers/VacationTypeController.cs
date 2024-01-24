@@ -7,20 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManagingEmployeVacations_PLayer.Controllers
 {
-    public class DepartmentController : Controller
+    public class VacationTypeController : Controller
     {
-        private readonly IRepository<Department> _RepoDepartment;
+        private readonly IRepository<VacationType> _RepoVacationType;
         private readonly IMapper _Mapper;
 
-        public DepartmentController(IRepository<Department> _RepoDepartment, IMapper map)
+        public VacationTypeController(IRepository<VacationType> _repoVacationType, IMapper map)
         {
-            this._RepoDepartment = _RepoDepartment;
+            _RepoVacationType = _repoVacationType;
             _Mapper = map;
         }
         public IActionResult Index()
         {
-            var Data = _RepoDepartment.GetAll().ToList();
-            var DataVM = _Mapper.Map<IEnumerable<DepartmentVm>>(Data);
+            var Data = _RepoVacationType.GetAll().ToList();
+            var DataVM = _Mapper.Map<IEnumerable<VacationTypeVm>>(Data);
             return View(DataVM);
         }
 
@@ -34,12 +34,12 @@ namespace ManagingEmployeVacations_PLayer.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(DepartmentVm model)
+        public IActionResult Create(VacationTypeVm model)
         {
             if (ModelState.IsValid)
             {
-                var DepartmentCreate = _Mapper.Map<DepartmentVm, Department>(model);
-                _RepoDepartment.Create(DepartmentCreate);
+                var VacationCreate = _Mapper.Map<VacationTypeVm, VacationType>(model);
+                _RepoVacationType.Create(VacationCreate);
                 return RedirectToAction(nameof(Index));
             }
             return View(model);
@@ -52,22 +52,22 @@ namespace ManagingEmployeVacations_PLayer.Controllers
         public IActionResult Delete(int id, string NameView="Delete")
         {
    
-                var Department = _RepoDepartment.GetById(id);
-            var DepartmentVM=_Mapper.Map<DepartmentVm>(Department);
+                var VacationType = _RepoVacationType.GetById(id);
+            var VacationTypeVm=_Mapper.Map<VacationTypeVm>(VacationType);
 
-            return View(NameView, DepartmentVM);
+            return View(NameView, VacationTypeVm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(DepartmentVm Model)
+        public IActionResult Delete(VacationTypeVm Model)
         {
 
             if (ModelState.IsValid)
             {
                 
-                var Department = _Mapper.Map<Department>(Model);
-                _RepoDepartment.DeleteEntity(Department);
+                var VacationType = _Mapper.Map<VacationType>(Model);
+                _RepoVacationType.DeleteEntity(VacationType);
                 return RedirectToAction(nameof(Index));
             }
             return View(Model);
@@ -83,12 +83,12 @@ namespace ManagingEmployeVacations_PLayer.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult update(DepartmentVm model)
+        public IActionResult update(VacationTypeVm model)
         {
             if (ModelState.IsValid)
             {
-                var DepartmentCreate = _Mapper.Map<DepartmentVm, Department>(model);
-                _RepoDepartment.UpdateEntity(DepartmentCreate);
+                var VacationTypeCreate = _Mapper.Map<VacationTypeVm, VacationType>(model);
+                _RepoVacationType.UpdateEntity(VacationTypeCreate);
                 return RedirectToAction(nameof(Index));
             }
             return View(model);

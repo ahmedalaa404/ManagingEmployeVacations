@@ -1,5 +1,6 @@
 using ManagingEmployeVacations_Bl.Repositorey;
 using ManagingEmployeVacations_Dal.Context;
+using ManagingEmployeVacations_Dal.Entites;
 using ManagingEmployeVacations_Dal.InterFaces;
 using ManagingEmployeVacations_PLayer.Profiles;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,8 @@ namespace ManagingEmployeVacations_PLayer
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
+            builder.Services.AddRazorPages()
+    .AddRazorRuntimeCompilation();
 
 
             #region Start Of Dependency Injections
@@ -20,8 +22,9 @@ namespace ManagingEmployeVacations_PLayer
             {
                 Options.UseSqlServer(builder.Configuration.GetConnectionString("VacationDbContext"));
             });
-            builder.Services.AddAutoMapper(typeof(MapperProfile));
+            builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
             builder.Services.AddScoped(typeof(IRepository<>),typeof(Repositorey<>));
+            builder.Services.AddScoped<IRepository<Employee>, RepoEmployee>();
 
 
             #endregion
