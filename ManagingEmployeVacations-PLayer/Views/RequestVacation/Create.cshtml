@@ -1,0 +1,99 @@
+﻿@using ManagingEmployeVacations_Dal.InterFaces
+  @model VacationDatePlanVm
+
+
+  @inject IRepository<Employee> Employee;
+  @inject IRepository<VacationType> Type;
+
+
+
+<div class="container p-4">
+    <div class="row">
+        @{
+
+            var Employees = Employee.GetAll();
+            var Types = Type.GetAll();
+
+
+
+            if (@ViewBag.ExistBefore==true)
+            {
+                <div class="alert alert-danger">U Have Vacation Between U time U Choose It</div>
+            }
+        }
+        <div class="col-md-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="All"></div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @if (ViewBag.ErrorVacation == false)
+                {
+                    <div class="w-100">
+                        <h4 class="alert alert-danger">The Holiday is on the Same Dates</h4>
+                    </div>
+
+                    <br />
+                }
+                <div class="input-group mb-3">
+
+                    <select asp-for="VacationRequest.EmployeeId" class="form-control" asp-items="@(new SelectList(Employees,"Id","Name"))">
+                        <option value="" selected>--------------- Search Employee --------------</option>
+                    </select>
+                </div>
+                <span asp-validation-for="VacationRequest.EmployeeId" class="text-danger"></span>
+                <div class="form-group row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="VacationRequest.StartDateVacations" class="control-label"></label>
+                        <input asp-for="VacationRequest.StartDateVacations" class="form-control" type="date" />
+                        <span asp-validation-for="VacationRequest.StartDateVacations" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="VacationRequest.EndDateVacations" class="control-label"></label>
+                        <input asp-for="VacationRequest.EndDateVacations" class="form-control" type="date" />
+                        <span asp-validation-for="VacationRequest.EndDateVacations" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row mt-3">
+                    <h4>Include Days</h4>
+
+                    <div class="form-group">
+                        @{
+                            DayOfWeek day;
+                            for (int i = 0; i < 7; i++)
+                            {
+                                day = (DayOfWeek)i;
+                                    <label class="form-check-label m-4">
+                                        <input type="checkbox" checked="checked" class="form-check-input"
+                                               name="DayOfWeekCheckbox" value="@i">
+                                        @day.ToString()
+                                    </label>
+
+                            }
+                        }
+                    </div>
+
+                </div>
+
+                <div class="form-group w-50">
+                    <label asp-for="VacationRequest.VacationTypeId" class="control-label"></label>
+                    <select asp-for="VacationRequest.VacationTypeId" class="form-control" asp-items="@(new SelectList(Types,"Id","Name"))">
+                        <option value="" selected>--------------- Search Employee --------------</option>
+
+                    </select>
+                    <span asp-validation-for="VacationRequest.VacationTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VacationRequest.Comment" class="control-label"></label>
+                    <textarea asp-for="VacationRequest.Comment" class="form-control"></textarea>
+                    <span asp-validation-for="VacationRequest.Comment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>|
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

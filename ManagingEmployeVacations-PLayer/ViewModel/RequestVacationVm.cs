@@ -4,9 +4,8 @@ namespace ManagingEmployeVacations_PLayer.ViewModel
 {
     public class RequestVacationVm
     {
-
-        public int EmpoyeeId { get; set; }
-        public Employee Empoyee { get; set; }
+        public int EmployeeId { get; set; }
+        public Employee Employee { get; set; }
 
 
 
@@ -21,11 +20,12 @@ namespace ManagingEmployeVacations_PLayer.ViewModel
 
         public bool Approved { get; set; }
 
-        public DateTime DateApproved { get; set; }
+        public DateTime? DateApproved { get; set; }
 
 
 
         public string Comment { get; set; }
+        public List<VacationDatePlan> VacationDatePlan { get; set; } = new List<VacationDatePlan>();
 
     }
 }

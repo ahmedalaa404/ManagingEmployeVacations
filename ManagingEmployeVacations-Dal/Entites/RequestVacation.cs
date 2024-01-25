@@ -4,8 +4,8 @@ namespace ManagingEmployeVacations_Dal.Entites
 {
     public class RequestVacation:BaseEntity
     {
-        public int EmpoyeeId { get; set; }
-        public Employee Empoyee { get; set; }
+        public int EmployeeId { get; set; }
+        public Employee? Employee { get; set; }
 
 
 
@@ -14,13 +14,13 @@ namespace ManagingEmployeVacations_Dal.Entites
         public DateTime EndDateVacations { get; set; }
 
 
-        public VacationType VacationType { get; set; }
+        public VacationType? VacationType { get; set; }
         public int  VacationTypeId { get; set; }
 
 
         public bool Approved { get; set; }
 
-        public DateTime DateApproved { get; set; }
+        public DateTime? DateApproved { get; set; }
 
 
 

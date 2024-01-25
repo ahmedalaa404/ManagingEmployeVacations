@@ -1,4 +1,4 @@
-﻿using ManagingEmployeVacations_Dal.Context;
+﻿    using ManagingEmployeVacations_Dal.Context;
 using ManagingEmployeVacations_Dal.Entites;
 using ManagingEmployeVacations_Dal.InterFaces;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ManagingEmployeVacations_Bl.Repositorey
 {
-    public class RepoRequestVacation:IRepository<RequestVacation>
+    public class RepoRequestVacation:IGetAll<RequestVacation>
     {
         private readonly VacationContext _Context;
 
@@ -19,33 +19,21 @@ namespace ManagingEmployeVacations_Bl.Repositorey
             _Context = Context;
         }
 
-        public int Create(RequestVacation entity)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void DeleteEntity(RequestVacation entity)
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerable<RequestVacation?> GetAll()
+
+
+        public IEnumerable<RequestVacation> GetAll()
         {
             var AllRequest = _Context.RequestsVacation
-              .Include(x => x.Empoyee)
+              .Include(x => x.Employee)
               .Include(x => x.VacationType)
               .OrderBy(x => x.DateRequestVacation);
             return AllRequest;
         }
 
-        public RequestVacation? GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void UpdateEntity(RequestVacation entity)
-        {
-            throw new NotImplementedException();
-        }
+
+
     }
 }

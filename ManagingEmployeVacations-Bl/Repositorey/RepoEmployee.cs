@@ -31,7 +31,7 @@ namespace ManagingEmployeVacations_Bl.Repositorey
             _Context.SaveChanges();
         }
 
-        public IEnumerable<Employee?> GetAll()
+        public IEnumerable<Employee> GetAll()
         {
             var AllData = _Context.Employees.Include(x=>x.Department).ToList();
 

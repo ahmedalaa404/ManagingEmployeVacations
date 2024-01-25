@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ManagingEmployeVacations_Dal.InterFaces
 {
-    public interface IGetAll<T> where T : BaseEntity
+    public interface IVacationPlan : ICreate<VacationDatePlan>, ICheckExist<VacationDatePlan>
     {
-
-        public IEnumerable<T> GetAll();
 
     }
 }

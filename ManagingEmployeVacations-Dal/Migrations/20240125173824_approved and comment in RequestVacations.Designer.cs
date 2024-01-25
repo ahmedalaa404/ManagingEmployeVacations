@@ -4,6 +4,7 @@ using ManagingEmployeVacations_Dal.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManagingEmployeVacations_Dal.Migrations
 {
     [DbContext(typeof(VacationContext))]
-    partial class VacationContextModelSnapshot : ModelSnapshot
+    [Migration("20240125173824_approved and comment in RequestVacations")]
+    partial class approvedandcommentinRequestVacations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,13 +85,13 @@ namespace ManagingEmployeVacations_Dal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DateApproved")
+                    b.Property<DateTime>("DateApproved")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateRequestVacation")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int>("EmpoyeeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EndDateVacations")
@@ -103,7 +105,7 @@ namespace ManagingEmployeVacations_Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("EmpoyeeId");
 
                     b.HasIndex("VacationTypeId");
 
@@ -117,9 +119,6 @@ namespace ManagingEmployeVacations_Dal.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime?>("VacationDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("VacationRequestId")
                         .HasColumnType("int");
@@ -168,9 +167,9 @@ namespace ManagingEmployeVacations_Dal.Migrations
 
             modelBuilder.Entity("ManagingEmployeVacations_Dal.Entites.RequestVacation", b =>
                 {
-                    b.HasOne("ManagingEmployeVacations_Dal.Entites.Employee", "Employee")
+                    b.HasOne("ManagingEmployeVacations_Dal.Entites.Employee", "Empoyee")
                         .WithMany("RequestVacations")
-                        .HasForeignKey("EmployeeId")
+                        .HasForeignKey("EmpoyeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -180,7 +179,7 @@ namespace ManagingEmployeVacations_Dal.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Employee");
+                    b.Navigation("Empoyee");
 
                     b.Navigation("VacationType");
                 });

@@ -4,6 +4,7 @@ using ManagingEmployeVacations_Dal.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManagingEmployeVacations_Dal.Migrations
 {
     [DbContext(typeof(VacationContext))]
-    partial class VacationContextModelSnapshot : ModelSnapshot
+    [Migration("20240125181227_ChangeColumnInRequestVacation")]
+    partial class ChangeColumnInRequestVacation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,7 +85,7 @@ namespace ManagingEmployeVacations_Dal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DateApproved")
+                    b.Property<DateTime>("DateApproved")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateRequestVacation")
@@ -117,9 +119,6 @@ namespace ManagingEmployeVacations_Dal.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime?>("VacationDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("VacationRequestId")
                         .HasColumnType("int");

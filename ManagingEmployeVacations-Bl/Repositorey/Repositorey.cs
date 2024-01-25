@@ -30,7 +30,7 @@ namespace ManagingEmployeVacations_Bl.Repositorey
             _Context.SaveChanges();
         }
 
-        public IEnumerable<t?> GetAll()
+        public IEnumerable<t> GetAll()
         {
             var AllData = _Context.Set<t>().ToList();
 

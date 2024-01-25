@@ -11,6 +11,8 @@ namespace ManagingEmployeVacations_PLayer.Profiles
             CreateMap<Department, DepartmentVm>().ReverseMap();
             CreateMap<Employee, EmployeeVm>().ReverseMap(); 
             CreateMap<VacationType, VacationTypeVm>().ReverseMap();
+            CreateMap<RequestVacation, RequestVacationVm>().ReverseMap();
+            CreateMap<VacationDatePlan, VacationDatePlanVm>().ReverseMap();
         }
 
     }

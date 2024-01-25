@@ -1,0 +1,56 @@
+﻿@model IEnumerable<RequestVacationVm>
+
+
+<div class="container">
+    <a class="btn btn-primary" asp-action="Create"> Create</a>
+
+    @{
+        if(Model.Count()>0)
+        {
+            <table class="table table-dark my-4">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th> Request Date</th>
+                        <th>Vacation Type</th>
+                        <th>Vacations</th>
+                        <th>Approved</th>
+                        <th>Date Approved</th>
+                        <th>Comment</th>
+                        <th>Events</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody">
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <th> @item.Employee.Name</th>
+
+                                <th> @item.DateRequestVacation</th>
+                                <th> @item.VacationType.Name</th>
+                                
+                                 <th>Vacations</th>
+                                <th>@item.Approved</th>
+                                <th>@item.DateApproved</th>
+                                <th>@item.Comment</th>
+                                 <th>
+
+                                    <button class="btn btn-danger">Delete</button>
+                                    <button class="btn btn-primary">Update</button>
+                                 
+                                 </th>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="m-4 alert alert-danger">NO Have Any Requests Vacations</div>
+        }
+    }
+
+
+</div>
