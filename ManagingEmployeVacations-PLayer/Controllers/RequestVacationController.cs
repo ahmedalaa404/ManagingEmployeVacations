@@ -11,10 +11,10 @@ namespace ManagingEmployeVacations_PLayer.Controllers
     public class RequestVacationController : Controller
     {
         private readonly IMapper Map;
-        private readonly IRequestRepo RequestRepo;
+        private readonly IRepository<RequestVacation> RequestRepo;
         private readonly IVacationPlan repoVacationPlan;
 
-        public RequestVacationController(IMapper map , IRequestRepo requestRepo , IVacationPlan RepoVacationPlan)
+        public RequestVacationController(IMapper map , IRepository<RequestVacation> requestRepo , IVacationPlan RepoVacationPlan)
         {
             Map = map;
             RequestRepo = requestRepo;
