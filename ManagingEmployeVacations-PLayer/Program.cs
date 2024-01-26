@@ -25,7 +25,7 @@ namespace ManagingEmployeVacations_PLayer
             builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
             builder.Services.AddScoped(typeof(IRepository<>),typeof(Repositorey<>));
             builder.Services.AddScoped<IRepository<Employee>, RepoEmployee>();
-            builder.Services.AddScoped<IGetAll<RequestVacation>, RepoRequestVacation>();
+            builder.Services.AddScoped<IRequestRepo, RepoRequestVacation>();
             builder.Services.AddScoped<IVacationPlan, RepoVacationPlan>();
 
             

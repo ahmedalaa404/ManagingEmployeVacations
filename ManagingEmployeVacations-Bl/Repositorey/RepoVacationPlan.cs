@@ -37,9 +37,15 @@ namespace ManagingEmployeVacations_Bl.Repositorey
 
         public int Create(VacationDatePlan entity)
         {
-
+         
             context.VacationsDatePlan.Add(entity);
             return context.SaveChanges();
+        }
+
+        public void UpdateEntity(VacationDatePlan entity)
+        {
+            context.VacationsDatePlan.Update(entity);
+             context.SaveChanges();
         }
     }
 }

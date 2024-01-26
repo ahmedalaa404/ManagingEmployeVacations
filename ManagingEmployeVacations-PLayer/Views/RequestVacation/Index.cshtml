@@ -12,10 +12,8 @@
                     <tr>
                         <th>Employee Name</th>
                         <th> Request Date</th>
-                        <th>Vacation Type</th>
                         <th>Vacations</th>
                         <th>Approved</th>
-                        <th>Date Approved</th>
                         <th>Comment</th>
                         <th>Events</th>
                     </tr>
@@ -25,21 +23,29 @@
                         foreach (var item in Model)
                         {
                             <tr>
-                                <th> @item.Employee.Name</th>
+                                <td> @item.Employee.Name</td>
 
-                                <th> @item.DateRequestVacation</th>
-                                <th> @item.VacationType.Name</th>
+                                <td> @item.DateRequestVacation</td>
+
+                                <td style="background-color:@(@item.VacationType.Background_Color)">
+                                <div class="d-flex justify-content-center">
+                                <p class="mx-1"> @item.StartDateVacations</p>
+                                <p class="mx-1"> @item.VacationType.Name</p>
+                                <p class="mx-1"> @item.EndDateVacations</p>
+                                </div>
+
+                                </td>
+
+                                <td class="text-center"><input type="checkbox" class="form-control" asp-for="@item.Approved" disabled/></td>
                                 
-                                 <th>Vacations</th>
-                                <th>@item.Approved</th>
-                                <th>@item.DateApproved</th>
-                                <th>@item.Comment</th>
-                                 <th>
 
-                                    <button class="btn btn-danger">Delete</button>
-                                    <button class="btn btn-primary">Update</button>
+                                <td>@item.Comment</td>
+                                 <td>
+
+                                    <a class="btn btn-danger" asp-route-id="@item.Id" asp-action="Delete">Delete</a>
+                                    <a class="btn btn-primary" asp-route-id="@item.Id" asp-action="Update">Update</a>
                                  
-                                 </th>
+                                 </td>
                             </tr>
                         }
                     }

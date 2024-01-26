@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace ManagingEmployeVacations_Dal.InterFaces
 {
-    public interface IVacationPlan : ICreate<VacationDatePlan>, ICheckExist<VacationDatePlan>,Update<VacationDatePlan>
+    public interface IRequestRepo:IGetAll<RequestVacation>, IGetById<RequestVacation>,Update<RequestVacation>,Delete<RequestVacation>
     {
+
 
     }
 }
