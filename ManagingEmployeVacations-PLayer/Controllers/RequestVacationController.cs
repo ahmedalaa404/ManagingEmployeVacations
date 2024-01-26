@@ -114,7 +114,6 @@ namespace ManagingEmployeVacations_PLayer.Controllers
             if (ModelState.IsValid)
             {
                 var Model = Map.Map<RequestVacation>(ModelVm);
-
                 RequestRepo.DeleteEntity(Model);
                 return RedirectToAction(nameof(Index));
             }
